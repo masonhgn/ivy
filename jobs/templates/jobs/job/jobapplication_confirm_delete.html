@@ -1,0 +1,16 @@
+{% extends "account/base.html" %}
+{% block title %}Confirm delete{% endblock %}
+{% block content %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <h2>Are you sure you want to delete this application?</h2>
+            <p> {{ application.title }}</p>
+        </fieldset>
+        <div class="form-group">
+            <button type="submit">Confirm</button>
+            <a href="{% url 'jobs:homepage' %}"><p>cancel</p></a>
+        </div>
+    </form>
+
+{% endblock %}

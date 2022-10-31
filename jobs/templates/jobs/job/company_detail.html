@@ -1,0 +1,23 @@
+{% extends "account/base.html" %}
+{% block title %}Company{% endblock %}
+{% block content %}
+<h1>{{ company.name }}</h1>
+<image src="{{ company.logo.url }}" width="100px" height="100px"></image>
+
+<h2>Reviews</h2>
+{% if not company.reviews.all %}
+    No reviews yet...<a href="#">Add one</a>
+{% else %}
+    {% for review in company.reviews.all %}
+        <p>------------------</p>
+        <p>{{ review.user }}</p>
+        <p>{{ review.star_rating }}</p>
+        <p>{{ review.position }}</p>
+        <p>{{ review.notes }}</p>
+        <p>{{ review.created }}</p>
+    {% endfor %}
+{% endif %}
+
+
+
+{% endblock %}

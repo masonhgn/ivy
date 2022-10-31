@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+</head>
+<body>
+
+    <div id="header">
+        {% if request.user.is_authenticated %}
+            <ul>
+                <li>
+                    <a href="{% url 'jobs:homepage' %}">home</a>
+                </li>
+
+                <li>
+                    <a href="{% url 'profile' %}">profile</a>
+                </li>
+
+                <li>
+                    <a href="#">none</a>
+                </li>
+            </ul>
+        {% endif %}
+
+        {% if request.user.is_authenticated %}
+            <ul>
+                <li>
+                    <p>[{{request.user.first_name|default:request.user.username }}]</p>
+                </li>
+
+                <li>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </li>
+            </ul>
+        {% else %}
+            <ul>
+                <li>
+                    <a href="{% url 'login' %}">Log-in</a>
+                </li>
+            </ul>
+
+        {% endif %}
+    </div>
+    
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">
+                {{ message|safe }}
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

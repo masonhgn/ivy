@@ -1,0 +1,11 @@
+{% extends "account/base.html" %}
+{% block title %}Create review{% endblock %}
+{% block content %}
+    <h1>Add review</h1>
+    <p>Add a quick review about your experience interviewing with this company.</p>
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Add review"></p>
+    </form>
+{% endblock %}

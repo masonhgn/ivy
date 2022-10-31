@@ -1,0 +1,37 @@
+{% extends "account/base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<h1>Your stats</h1>
+
+
+<a href="{% url 'jobs:add' %}">
+    <p>add application</p>
+</a>
+
+
+{% if applications %}
+    {% for application in applications %}
+        <p></p>
+        <a href="{% url 'jobs:company-detail' application.company.pk %}">
+            <p>{{application.company.name}}</p>
+        </a>
+
+        <image src=" {{ application.company.logo.url }}" width="30px" height = 30px></image>
+        <p>{{application.stage}}</p>
+        <p>{{application.date_applied}}</p>
+        <a href="{% url 'jobs:job-application-delete' application.pk %}">
+            <p>delete</p>
+        </a>
+
+        <a href="{% url 'jobs:job-application-update' application.pk %}">
+            <p>edit</p>
+        </a>
+        <p></p>
+    {% endfor %}
+{% else %}
+    <p>You haven't added any applications yet.</p>
+{% endif %}
+
+
+
+{% endblock %}

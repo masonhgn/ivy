@@ -1,0 +1,17 @@
+{% extends "account/base.html" %}
+{% block title %}Edit profile{% endblock %}
+{% block content %}
+    <h1>Edit your profile</h1>
+    <p>Change any settings in your profile.</p>
+
+    <h2>{{user.username}}</h2>
+    <p>{{user.email}}</p>
+    <image src=" {{ user.profile.photo.url }}" width="100px" height="100px"></image>
+
+    <form method="post" enctype="multipart/form-data">
+        {{ u_form.as_p }}
+        {{ p_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Save changes"></p>
+    </form>
+{% endblock %}
