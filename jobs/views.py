@@ -40,8 +40,15 @@ def job_application_create(request):
 @login_required
 def homepage(request):
     #return render(request, 'home/homepage.html', {'section': 'homepage'})
+    total_applications = JobApplication.objects.filter(user = request.user)
+    num_applications = total_applications.count()
+    total_rejected = JobApplication.objects.filter(user=request.user,stage='Rejected').count()
+    total_offers = JobApplication.objects.filter(user=request.user,stage='Offer Given').count()
     context = {
-        'applications' : JobApplication.objects.filter(user = request.user),
+        'numApplications' : num_applications,
+        'applications' : total_applications,
+        'numRejected' : total_rejected,
+        'numOffers' : total_offers,
     }
     return render(request,'home/homepage.html', context)
 

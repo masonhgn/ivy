@@ -8,14 +8,43 @@
 {% if not company.reviews.all %}
     No reviews yet...<a href="#">Add one</a>
 {% else %}
-    {% for review in company.reviews.all %}
-        <p>------------------</p>
-        <p>{{ review.user }}</p>
-        <p>{{ review.star_rating }}</p>
-        <p>{{ review.position }}</p>
-        <p>{{ review.notes }}</p>
-        <p>{{ review.created }}</p>
-    {% endfor %}
+
+    <div class="company-reviews">
+        {% for review in company.reviews.all %}
+            <div class="company-review-item">
+                <div class="company-review-item-top">
+
+                    <div class="company-review-item-item">
+                        <image src="{{ review.user.profile.url }}" width="20px" class="tiny-prof-img"></image>
+                    </div>
+
+                    <div class="company-review-item-item">
+                        <b>{{ review.user }}</b>
+                    </div>
+
+                    <div class="company-review-item-item">
+                        <p>{{ review.created }}</p>
+                    </div>
+
+                    <div class="company-review-item-item">
+                        <p>{{ review.position }}</p>
+                    </div>
+
+                </div>
+
+                <div class="company-review-item-bottom">
+                    <div class="company-review-item-item">
+                        <p>{{ review.notes }}</p>
+                    </div>
+
+                    <div class="company-review-item-item">
+                        <h1>{{ review.star_rating }} / 5</h1>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+    </div>
 {% endif %}
 
 

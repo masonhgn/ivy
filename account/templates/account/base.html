@@ -5,45 +5,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
 </head>
 <body>
-
+    <div class="logo-container">
+        <image src="{% static 'logo.png' %}" class="logo-img"></image>
+    </div>
     <div id="header">
-        {% if request.user.is_authenticated %}
-            <ul>
-                <li>
-                    <a href="{% url 'jobs:homepage' %}">home</a>
-                </li>
+            <nav class="main-nav">
+                {% if request.user.is_authenticated %}
+                    <ul class="nav-menu">
 
-                <li>
-                    <a href="{% url 'profile' %}">profile</a>
-                </li>
+                        <a href="{% url 'jobs:homepage' %}">
+                            <li class="nav-menu-item">
+                                Home
+                            </li>
+                        </a>
 
-                <li>
-                    <a href="#">none</a>
-                </li>
-            </ul>
-        {% endif %}
+                        <a href="{% url 'profile' %}">
+                            <li class="nav-menu-item">
+                                [{{request.user.first_name|default:request.user.username }}]
+                            </li>
+                        </a>
 
-        {% if request.user.is_authenticated %}
-            <ul>
-                <li>
-                    <p>[{{request.user.first_name|default:request.user.username }}]</p>
-                </li>
+                {% endif %}
+    
+                {% if request.user.is_authenticated %}
 
-                <li>
-                    <a href="{% url 'logout' %}">Logout</a>
-                </li>
-            </ul>
-        {% else %}
-            <ul>
-                <li>
-                    <a href="{% url 'login' %}">Log-in</a>
-                </li>
-            </ul>
+                        <a href="{% url 'logout' %}">
+                            <li class="nav-menu-item">
+                                Logout
+                            </li>
+                        </a>
+            
+                    </ul>
+                {% else %}
+                    <ul class="nav-menu">
 
-        {% endif %}
+                        <a href="{% url 'login' %}">
+                            <li class="nav-menu-item">
+                                Login
+                            </li>
+                        </a>
+
+                    </ul>
+    
+                {% endif %}
+            </nav>
+
+        
+        
     </div>
     
     {% if messages %}
@@ -57,9 +69,14 @@
     {% endif %}
 
 
-    <div id="content">
+    <div id="main-content">
         {% block content %}
         {% endblock %}
     </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,33 +1,79 @@
 {% extends "account/base.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-<h1>Your stats</h1>
 
 
-<a href="{% url 'jobs:add' %}">
-    <p>add application</p>
-</a>
+<div class="counter-container">
+    <div class="counter-item">
+        <h2>Applied</h2>
+        <h1>{{ numApplications }}</h1>
+    </div>
+
+    <div class="counter-item">
+        <h2>Rejected</h2>
+        <h1>{{ numRejected }}</h1>
+    </div>
+    
+    <div class="counter-item">
+        <h2>Offers</h2>
+        <h1>{{ numOffers }}</h1>
+    </div>
+</div>
+
+
+<div class="add-application-section">
+    <a href="{% url 'jobs:add' %}">
+        <button type="button" class="btn btn-success">Add Application</button>
+    </a>
+</div>
+
+
+
+
+
+
 
 
 {% if applications %}
-    {% for application in applications %}
-        <p></p>
-        <a href="{% url 'jobs:company-detail' application.company.pk %}">
-            <p>{{application.company.name}}</p>
-        </a>
+    <div class="application-container">
+        {% for application in applications %}
+            <div class="application-item">
 
-        <image src=" {{ application.company.logo.url }}" width="30px" height = 30px></image>
-        <p>{{application.stage}}</p>
-        <p>{{application.date_applied}}</p>
-        <a href="{% url 'jobs:job-application-delete' application.pk %}">
-            <p>delete</p>
-        </a>
+                <div class="application-item-part">
+                    <image src=" {{ application.company.logo.url }}" 
+                    width=60px class="application-item-part-img"></image>
+                </div>
 
-        <a href="{% url 'jobs:job-application-update' application.pk %}">
-            <p>edit</p>
-        </a>
-        <p></p>
-    {% endfor %}
+                <div class="application-item-part">
+                    <a href="{% url 'jobs:company-detail' application.company.pk %}">
+                        <p>{{application.company.name}}</p>
+                    </a>
+                </div>
+
+                <div class="application-item-part">
+                    <p>{{application.stage}}</p>
+                </div>
+                
+                <div class="application-item-part">
+                    <p>{{application.date_applied}}</p>
+                </div>
+
+                <div class="application-item-part">
+                    <a href="{% url 'jobs:job-application-delete' application.pk %}">
+                        <p>delete</p>
+                    </a>
+                </div>
+
+                <div class="application-item-part">
+                    <a href="{% url 'jobs:job-application-update' application.pk %}">
+                        <p>edit</p>
+                    </a>
+                </div>
+            </div>
+
+
+        {% endfor %}
+    </div>
 {% else %}
     <p>You haven't added any applications yet.</p>
 {% endif %}

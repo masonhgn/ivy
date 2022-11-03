@@ -38,7 +38,8 @@ def profile(request):
     else:
         u_form = UserEditForm(instance=request.user)
         p_form = ProfileEditForm(instance=request.user.profile)
-    context = { 
+    context = {
+        'photo_url': request.user.profile.photo.url,
         'u_form': u_form,
         'p_form': p_form
     }

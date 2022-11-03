@@ -35,11 +35,13 @@ class CompanyReview(models.Model):
 
 INTERVIEW_STAGE = [
     ('Applied','Applied'),
+    ('Rejected', 'Rejected'),
     ('Online Assessment','Online Assessment'),
     ('1st Round Interview','1st Round Interview'),
     ('2nd Round Interview','2nd Round Interview'),
     ('3rd Round Intervew','3rd Round Intervew'),
     ('4th Round Interview','4th Round Interview'),
+    ('Given Offer','Given Offer'),
 ]
 
 class JobApplication(models.Model):
