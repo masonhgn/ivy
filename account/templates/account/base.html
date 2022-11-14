@@ -65,10 +65,12 @@
     </div>
     
     {% if messages %}
-    <ul class="messages">
+    <ul class="messages" style="text-align: center; list-style-type: none;">
         {% for message in messages %}
             <li class="{{ message.tags }}">
+                <div class="alert alert-secondary" role="alert" style="width: 50%; margin: 0 auto;">
                 {{ message|safe }}
+                </div>
             </li>
         {% endfor %}
     </ul>

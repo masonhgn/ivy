@@ -23,8 +23,8 @@ class JobApplicationCompanyWidget(s2forms.ModelSelect2Widget):
 class JobApplicationForm(forms.ModelForm):
     class Meta:
         model = JobApplication
-        fields = '__all__'
-        #fields = ['company','stage','date_applied']
+        #fields = '__all__'
+        fields = ['company','stage','date_applied']
         widgets = {
             "company": JobApplicationCompanyWidget,
         }

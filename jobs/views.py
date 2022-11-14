@@ -10,6 +10,8 @@ from django.urls import reverse_lazy
 from django.http import JsonResponse
 from django.views import generic
 import json
+
+
 @login_required
 def company_review_create(request):
     if request.method == 'POST':
@@ -63,9 +65,17 @@ def job_application_create(request):
 
 class JobApplicationCreateView(generic.CreateView):
     model = JobApplication
+    template_name = 'jobs/job/jobapplication_form.html'
     form_class = forms.JobApplicationForm
-    success_url = "/"
-
+    success_url = reverse_lazy('homepage')
+    def form_valid(self, form):
+        form.instance.user=self.request.user
+        return super().form_valid(form)
+    def test_func(self):
+        JobApplication = self.get_object()
+        if self.request.user == JobApplication.user:
+            return True
+        return False
 
 @login_required
 def homepage(request):

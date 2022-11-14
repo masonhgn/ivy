@@ -193,6 +193,25 @@ CSS FOR APPLICATION FORM
 
 
 
+/***
+ * 
+ * CSS FOR PROFILE EDIT PAGE
+ * */
+
+.profile-image-container {
+    margin: 0 auto;
+    width: 100px;
+
+}
+
+.profile-image-lg {
+    width: 100%;
+    background-color: white;
+    border-radius: 100%;
+    border-style: solid;
+    border-width: 1px;
+}
+
 
 
 

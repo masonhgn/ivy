@@ -39,7 +39,7 @@ def profile(request):
         u_form = UserEditForm(instance=request.user)
         p_form = ProfileEditForm(instance=request.user.profile)
     context = {
-        'photo_url': request.user.profile.photo.url,
+        'user': request.user,
         'u_form': u_form,
         'p_form': p_form
     }
