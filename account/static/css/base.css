@@ -1,20 +1,28 @@
 *{
     text-decoration: none;
+    color: rgb(207, 207, 207);
+    font-family: 'Changa', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 
 body {
-    background-color: rgb(207, 207, 207);
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(73, 94, 109);
 }
 
 #header {
     height: 10%;
+    background-color: rgb(48, 63, 73);
+}
+
+.top-container {
+    background-color: rgb(30, 42, 49);
 }
 
 .logo-container {
     margin: 0 auto;
     padding-top: 20px;
+    padding-bottom: 10px;
     width: 50px;
 }
 
@@ -24,9 +32,10 @@ body {
 }
 
 .main-nav {
-    padding: 20px;
+    background-color: rgb(48, 63, 73);
+    padding: 10px;
     margin: 0 auto;
-    width: 40%;
+    width: 50%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,13 +58,12 @@ body {
     text-align: center;
     text-decoration: none;
     font-size: 20px;
-    padding-right: 10px;
-    padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
     margin-left: 1rem;
     margin-right: 1rem;
     width: 80px;
+    border-bottom: 6px solid transparent;
 }
 
 .nav-menu-item:hover {
@@ -64,9 +72,19 @@ body {
 }
 
 #main-content {
-    width: 40%;
+    width: 60%;
     margin: 0 auto;
 }
+
+
+
+
+
+
+
+/****
+CSS FOR SELECT2 STUFF AND FORMS
+*/
 
 
 
@@ -84,6 +102,9 @@ CSS FOR MAIN HOMEPAGE ************************************
 ****/
 
 .counter-container {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
@@ -93,9 +114,9 @@ CSS FOR MAIN HOMEPAGE ************************************
     border-radius: 10px;
     border-style: solid;
     border-width: 1px;
-    border-color: rgb(187, 187, 187);
-    background-color: rgb(192, 192, 192);
-    box-shadow: 5px 5px 10px rgb(173, 173, 173);
+    border-color: rgb(39, 50, 58);
+    background-color: rgb(45, 70, 88);
+    box-shadow: 5px 5px 6px rgb(60, 76, 88);
     text-align: center;
     padding: 20px;
 }
@@ -105,15 +126,19 @@ CSS FOR MAIN HOMEPAGE ************************************
 }
 
 
+.companies-banner-container {
+    display: grid;
+    grid-template-columns: 25% 30% 26% 10% 7%;
+    padding-left: 20px;
+}
+
+
+
+
 
 .application-container {
     width: 98%;
     margin: 0 auto;
-    border-style: solid;
-    border-radius: 10px;
-    border-width: 1px;
-    border-color: gray;
-
 }
 
 .add-application-section {
@@ -127,23 +152,111 @@ CSS FOR MAIN HOMEPAGE ************************************
     font-size: 18px;
     height: 70px;
     display: grid;
-    grid-template-columns: 20% 20% 20% 20% 10% 10%;
-    border-bottom: 1px solid rgb(180, 180, 180);
+    grid-template-columns: 25% 30% 26% 6% 6%;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+
+.application-item-company-container {
     padding: 10px;
 }
-.application-item-part {
-    color: black;
 
+
+
+.application-ipt-applied {
+    width: 80%;
+    background-color:rgb(39, 54, 49);
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 1px;
 }
 
-.application-item-part a {
-    color: black;
+.application-ipt-rejected {
+    width: 80%;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 1px;
+    background-color: rgb(163, 72, 72);
 }
 
-.application-item-part-img {
-    width: 50px;
-    padding: 8px;
+.application-ipt-oa {
+    width: 80%;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 1px;
+    background-color: rgb(137, 172, 73);
 }
+
+.application-ipt-1st {
+    width: 80%;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 1px;
+    background-color: rgb(43, 82, 55);
+}
+
+.application-ipt-2nd {
+    width: 80%;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 1px;
+    background-color: rgb(55, 105, 70);
+}
+
+.application-ipt-3rd {
+    width: 80%;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 1px;
+    background-color: rgb(51, 97, 65);
+}
+
+.application-ipt-4th {
+    width: 80%;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 1px;
+    background-color: rgb(68, 129, 86);
+}
+
+.application-ipt-offer {
+    width: 80%;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 1px;
+    background-color: rgb(50, 155, 81);
+}
+
+
+
+.application-item-part-container-name {
+    padding-top: 6px;
+}
+
+.application-item-company-container-image {
+    float: left;
+}
+
+.application-item-company-container-name {
+    float: left;
+    padding-top: 6px;
+    padding-left: 15px;
+}
+
+
+
+
+
 
 /********
 CSS FOR COMPANY DETAILs
@@ -189,6 +302,11 @@ CSS FOR APPLICATION FORM
 
 #id_company {
     width: 50%;
+}
+
+.form-container {
+    margin: 0 auto;
+    text-align: center;
 }
 
 

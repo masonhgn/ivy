@@ -3,40 +3,50 @@
 {% block content %}
 
     {{ form.media.css }}
-
-    <h1>Add job application</h1>
-    <p>Add an application to a specific company to your list of applications.</p>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Add application">
-    </form>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    {{ form.media.js }}
-
-
-
+    <div class="form-container">
+        <h1>Add job application</h1>
+        <p>Add an application to a specific company to your list of applications.</p>
+        <form method="POST">
+            {% csrf_token %}
     
-    <script>
-        /*
-        $(document).ready(function () {
-            $('#id_company').select2({
-                ajax: {
-                    url: "{% url 'homepage' %}",
-                    dataType: 'json',
-                    processResults: function (data) {
-                        return {
-                            results: $.map(data, function (item) {
-                                return {id: item.id, text: item.name};
-                            })
-                        };
-                    }
-                },
-                minimumInputLength: 1
+            <label for="id_company" class="form-label">Company</label>
+            <p>{{ form.company }}</p>
+    
+            <label for="id_stage" class="form-label">Stage of application</label>
+            <p>{{ form.stage }}</p>
+    
+            <label for="id_date_applied" class="form-label">Date applied</label>
+            <p>{{ form.date_applied }}</p>
+            <button class="btn btn-md btn-success btn-block" type="submit" style="width: 30%; margin: 0 auto;">Add application</button>
+        </form>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        {{ form.media.js }}
+    
+    
+    
+        
+        <script>
+            /*
+            $(document).ready(function () {
+                $('#id_company').select2({
+                    ajax: {
+                        url: "{% url 'homepage' %}",
+                        dataType: 'json',
+                        processResults: function (data) {
+                            return {
+                                results: $.map(data, function (item) {
+                                    return {id: item.id, text: item.name};
+                                })
+                            };
+                        }
+                    },
+                    minimumInputLength: 1
+                });
             });
-        });
-        */
-    </script>
+            */
+        </script>
+    </div>
+    
 
 
 {% endblock %}

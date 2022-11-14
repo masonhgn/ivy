@@ -32,9 +32,35 @@
 
 
 
+<hr class="solid">
+<div class="companies-banner-container">
+    <div>
+        <h2>Company</h2>
+        <p>Name of the company</p>
+    </div>
+
+    <div>  
+        <h2>Stage</h2>
+        <p>Current stage of application</p>
+    </div>
+
+    <div>    
+        <h2>Date applied</h2>
+        <p>Date you applied to the company</p>
+    </div>
+
+    <div> 
+    </div>
+
+    <div>
+    </div>
+
+    <div> 
+    </div>
 
 
-
+</div>
+<hr class="solid">
 
 
 {% if applications %}
@@ -42,37 +68,75 @@
         {% for application in applications %}
             <div class="application-item">
 
-                <div class="application-item-part">
-                    <image src=" {{ application.company.logo.url }}" 
-                    width=60px class="application-item-part-img"></image>
-                </div>
+                <div class="application-item-company-container">
+                    <image class="application-item-company-container-image" 
+                    width=40px src=" {{ application.company.logo.url }}"></image>
 
-                <div class="application-item-part">
-                    <a href="{% url 'jobs:company-detail' application.company.pk %}">
+                    <a href="{% url 'jobs:company-detail' application.company.pk %}" class="application-item-company-container-name">
                         <p>{{application.company.name}}</p>
                     </a>
                 </div>
 
-                <div class="application-item-part">
-                    <p>{{application.stage}}</p>
+
+
+                <div class="application-item-part-container">
+                    {% if application.stage == 'Applied' %}
+                        <div class="application-ipt-applied">
+                            <p>{{application.stage}}</p>
+                        </div>
+                    {% elif application.stage == 'Rejected' %}
+                        <div class="application-ipt-rejected">
+                            <p>{{application.stage}}</p>
+                        </div>
+                    {% elif application.stage == 'Online Assessment' %}
+                        <div class="application-ipt-oa">
+                            <p>{{application.stage}}</p>
+                        </div>    
+                    {% elif application.stage == '1st Round Interview' %}
+                        <div class="application-ipt-1st">
+                            <p>{{application.stage}}</p>
+                        </div> 
+                    {% elif application.stage == '2nd Round Interview' %} 
+                        <div class="application-ipt-2nd">
+                            <p>{{application.stage}}</p>
+                        </div>
+                    {% elif application.stage == '4th Round Interview' %} 
+                        <div class="application-ipt-4th">
+                            <p>{{application.stage}}</p>
+                        </div>   
+                    {% elif application.stage == 'Given Offer' %} 
+                        <div class="application-ipt-offer">
+                            <p>{{application.stage}}</p>
+                        </div>  
+                    {% else %}
+                        <div class="application-ipt-3rd">
+                            <p>{{application.stage}}</p>
+                        </div> 
+
+                    {% endif %}   
                 </div>
                 
-                <div class="application-item-part">
-                    <p>{{application.date_applied}}</p>
+                <div class="application-item-part-container">
+                    <div class="application-item-company-container-name">
+                        <p>{{application.date_applied}}</p>
+                    </div>
                 </div>
 
-                <div class="application-item-part">
-                    <a href="{% url 'jobs:job-application-delete' application.pk %}">
+                <div class="application-item-part-container">
+                    <a href="{% url 'jobs:job-application-delete' application.pk %}" class="application-item-company-container-name">
                         <p>delete</p>
                     </a>
                 </div>
 
-                <div class="application-item-part">
-                    <a href="{% url 'jobs:job-application-update' application.pk %}">
+                <div class="application-item-part-container">
+                    <a href="{% url 'jobs:job-application-update' application.pk %}" class="application-item-company-container-name">
                         <p>edit</p>
                     </a>
                 </div>
             </div>
+
+            <hr class="solid">
+
 
 
         {% endfor %}
