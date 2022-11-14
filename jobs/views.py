@@ -1,11 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from . import forms
 from django.contrib import messages
 from .forms import CompanyReviewForm, JobApplicationForm
 from .models import JobApplication, CompanyReview, Company
 from django.views.generic import ListView, DetailView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
+from django.http import JsonResponse
+from django.views import generic
+import json
 @login_required
 def company_review_create(request):
     if request.method == 'POST':
@@ -22,10 +26,31 @@ def company_review_create(request):
         form = CompanyReviewForm(data=request.GET)
     return render(request,'jobs/job/create_review.html', {'section':'jobs','form':form})
 
+
+def is_ajax(request):
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+    #if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
+        print('AJAX REQUESTED AJAX REQUESTED AJAX REQUESTED ')
+        return True
+    print('AJAX NOT REQUESTED...')
+    return False
+    #return request.accepts("application/json")
+
+''' i also tried this:
+def is_ajax(request):
+    return request.headers.get('x-requested-with') == 'XMLHttpRequest'
+'''
+
+'''
 @login_required
 def job_application_create(request):
+    form = JobApplicationForm(instance=JobApplication.objects.first())
+    if is_ajax(request):
+        term = request.GET.get('term')
+        companies = Company.objects.all().filter(name__icontains=term)
+        return JsonResponse(list(companies.values()), safe=False)
     if request.method == 'POST':
-        form = JobApplicationForm(data=request.POST)
+        form = JobApplicationForm(request.POST, instance = JobApplication.objects.first())
         if form.is_valid():
             cd = form.cleaned_data
             new_job_application = form.save(commit=False)
@@ -33,9 +58,14 @@ def job_application_create(request):
             new_job_application.save()
             messages.success(request, 'New job application added.')
             return redirect('/')
-    else:
-        form = JobApplicationForm(data = request.GET)
-    return render(request,'jobs/job/jobapplication_form.html',{'section': 'jobs','form': form})
+    return render(request,'jobs/job/jobapplication_form.html',{'section':'jobs','form':form})
+'''
+
+class JobApplicationCreateView(generic.CreateView):
+    model = JobApplication
+    form_class = forms.JobApplicationForm
+    success_url = "/"
+
 
 @login_required
 def homepage(request):

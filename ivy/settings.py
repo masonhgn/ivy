@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'jobs.apps.JobsConfig',
     'account.apps.AccountConfig',
     'django.contrib.admin',
+    'django_select2',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

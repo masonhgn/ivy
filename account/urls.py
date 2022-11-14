@@ -4,6 +4,7 @@ from jobs import views
 
 urlpatterns = [
     path('', include('django.contrib.auth.urls')),
+    path("select2/", include("django_select2.urls")),
     path('',views.homepage, name='homepage'),
 ]
 

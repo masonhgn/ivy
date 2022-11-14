@@ -3,18 +3,46 @@ from .models import Company, CompanyReview,JobApplication
 from django.core.files.base import ContentFile
 from django.utils.text import slugify
 import requests
+from django_select2 import forms as s2forms
 class CompanyReviewForm(forms.ModelForm):
     class Meta:
         model = CompanyReview
-        #fields = '__all__'
-        fields = ['notes']
+        fields = '__all__'
+        #fields = ['notes']
     
     
+
+
+class JobApplicationCompanyWidget(s2forms.ModelSelect2Widget):
+    search_fields = [
+        "name__icontains",
+    ]
+
+
+
 class JobApplicationForm(forms.ModelForm):
     class Meta:
         model = JobApplication
-        #fields = '__all__'
-        fields = ['company','stage','date_applied']
+        fields = '__all__'
+        #fields = ['company','stage','date_applied']
+        widgets = {
+            "company": JobApplicationCompanyWidget,
+        }
+
+    '''
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['company'].queryset = Company.objects.none()
+
+        if 'company' in self.data:
+            self.fields['company'].queryset = Company.objects.all()
+        elif self.instance.pk:
+            self.fields['company'].queryset = Company.objects.all().filter(pk=self.instance.company.pk)
+    '''
+
+
+
+
 
 
 '''

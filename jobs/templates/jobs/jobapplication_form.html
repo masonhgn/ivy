@@ -1,0 +1,42 @@
+{% extends "account/base.html" %}
+{% block title %}Add application{% endblock %}
+{% block content %}
+
+    {{ form.media.css }}
+
+    <h1>Add job application</h1>
+    <p>Add an application to a specific company to your list of applications.</p>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Add application">
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {{ form.media.js }}
+
+
+
+    
+    <script>
+        /*
+        $(document).ready(function () {
+            $('#id_company').select2({
+                ajax: {
+                    url: "{% url 'homepage' %}",
+                    dataType: 'json',
+                    processResults: function (data) {
+                        return {
+                            results: $.map(data, function (item) {
+                                return {id: item.id, text: item.name};
+                            })
+                        };
+                    }
+                },
+                minimumInputLength: 1
+            });
+        });
+        */
+    </script>
+
+
+{% endblock %}

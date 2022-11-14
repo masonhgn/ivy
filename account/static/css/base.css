@@ -72,6 +72,12 @@ body {
 
 
 
+/******CSS FOR LOGIN */
+#login-form {
+    margin: 0 auto;
+    width: 40%;
+}
+
 
 /**** 
 CSS FOR MAIN HOMEPAGE ************************************
@@ -176,6 +182,14 @@ CSS FOR COMPANY DETAILs
     border-color: black;
 }
 
+
+/********
+CSS FOR APPLICATION FORM
+********/
+
+#id_company {
+    width: 50%;
+}
 
 
 
