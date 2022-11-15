@@ -248,10 +248,14 @@ CSS FOR MAIN HOMEPAGE ************************************
 }
 
 .application-item-company-container-name {
+    text-decoration: none;
+    color: black !important;
     float: left;
     padding-top: 6px;
     padding-left: 15px;
 }
+
+
 
 
 
