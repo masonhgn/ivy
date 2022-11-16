@@ -7,8 +7,8 @@ from django.urls import reverse
 
 class Company(models.Model):
     name = models.CharField(max_length=200)
-    logo = models.ImageField(upload_to='images/%Y/%m/%d/')
-    url = models.CharField(max_length=300)
+    logo_url = models.CharField(max_length=300,default='')
+    url = models.CharField(max_length=300,default='')
     def __str__(self):
         return self.name
     def get_absolute_url(self):

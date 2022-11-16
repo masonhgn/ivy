@@ -70,7 +70,7 @@
 
                 <div class="application-item-company-container">
                     <image class="application-item-company-container-image" 
-                    width=40px src=" {{ application.company.logo.url }}"></image>
+                    width=40px src=" {{ application.company.logo_url }}"></image>
 
                     <a href="{% url 'jobs:company-detail' application.company.pk %}" class="application-item-company-container-name">
                         <p>{{application.company.name}}</p>

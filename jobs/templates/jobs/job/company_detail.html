@@ -2,7 +2,7 @@
 {% block title %}Company{% endblock %}
 {% block content %}
 <h1>{{ company.name }}</h1>
-<image src="{{ company.logo.url }}" width="100px" height="100px"></image>
+<image src="{{ company.logo_url }}" width="100px" height="100px"></image>
 
 <h2>Reviews</h2>
 {% if not company.reviews.all %}
