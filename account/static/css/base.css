@@ -306,11 +306,39 @@ CSS FOR APPLICATION FORM
 
 #id_company {
     width: 50%;
+    background-color: rgb(45, 70, 88) !important;
 }
 
 .form-container {
     margin: 0 auto;
     text-align: center;
+}
+
+/*
+.select2-selection--single {
+    background-color: rgb(45, 70, 88) !important;
+}
+
+.select2-search__field {
+    background-color: rgb(45, 70, 88) !important;
+}
+
+.select2-results__message {
+    background-color: rgb(45, 70, 88) !important;
+}
+
+.select2-search--dropdown {
+    background-color: rgb(45, 70, 88) !important;
+}
+
+*/
+
+#id_stage {
+    background-color: rgb(45, 70, 88) !important;
+}
+
+#id_date_applied {
+    background-color: rgb(45, 70, 88) !important;
 }
 
 
