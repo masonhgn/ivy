@@ -9,7 +9,7 @@ Initial CSS of the homepage:
 
 
 11/16/2022
-I've automated the process of adding companies to the database. There are now around 1400 companies stored in the database.
+I've web scraped a little over 1400 companies and added them to the database using python.
 I've also updated the home page CSS
 ![image](https://user-images.githubusercontent.com/73012906/202124295-de817eec-ed1f-40bc-adf0-d5c281ac2706.png)
 
