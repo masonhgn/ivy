@@ -1,6 +1,6 @@
-Ivy is a job tracking tool created with Django. 
-I've created a home page where you can keep track of all the jobs you've applied to. In the form, there is a search/filter dropdown I integrated
-with django-select2 to choose the company you are applying to, as well as the current stage and date.
+Ivy is a multi-user platform that allows users to keep track of the jobs they've applied to in an easily readable format. Users can sign up, log in, edit their profile, and on the homepage they can add job applications, which will have a status label, date of applicatio, and link to each company.
+Each company has a page that users can leave comments on giving their experience about the interview process/working there.
+
 
 I'm going to try to build a function to automatically scan your email to check the status of jobs, and maybe even add new jobs you've applied to. This will work by checking for emails that say "thank you for applying to xxx" or emails with the keyword hackerrank or something like that.
 
