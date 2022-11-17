@@ -1,4 +1,4 @@
-Ivy is a multi-user platform that allows users to keep track of the jobs they've applied to in an easily readable format. Users can sign up, log in, edit their profile, and on the homepage they can add job applications, which will have a status label, date of applicatio, and link to each company.
+Ivy is a multi-user platform that allows users to keep track of the jobs they've applied to in an easily readable format. Users can sign up, log in, edit their profile, and on the homepage they can add job applications, which will have a status label, date of application, and link to each company.
 Each company has a page that users can leave comments on giving their experience about the interview process/working there.
 
 
