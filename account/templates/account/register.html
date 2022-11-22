@@ -1,4 +1,10 @@
 {% extends "account/base.html" %}
+{% load widget_tweaks %}
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+
 {% block title %}Register{% endblock %}
 {% block content %}
 
@@ -11,8 +17,23 @@
     <h1>Register for a new account</h1>
     <p>Use this form to sign up:</p>
     <form method="post">
-        {{ user_form.as_p }}
         {% csrf_token %}
-        <p><input type="submit" value="Create account"></p>
+
+        {% for hidden_field in user_form.hidden_fields %}
+            {{ hidden_field }}
+        {% endfor %}
+
+        {% for field in user_form.visible_fields %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {% render_field field class="form-control" style="width: 33%; margin: auto" %}
+                {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <!--{{ user_form.as_p }}-->
+
+        <p><input type="submit" value="Create account" class="btn btn-md btn-primary btn-block" style="width:33%; margin: auto"></p>
     </form>
 {% endblock %}

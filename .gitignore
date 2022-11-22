@@ -1,0 +1,8 @@
+# generic folders and files to ignore
+/venv/
+/.idea/
+*.pyc
+db.sqlite3
+
+# personal folders/files
+#...
