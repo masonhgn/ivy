@@ -14,11 +14,19 @@ class LinkedInTags:
 
 
 class JobPosting:
+    job_title = None
+    company = None
+    location = None
+    employment_type = None
+
     def __init__(self, job_title: str, company: str, location: str, employment_type: str = None):
-        job_title = job_title
-        company = company
-        location = location
-        employment_type = employment_type
+        self.job_title = job_title
+        self.company = company
+        self.location = location
+        self.employment_type = employment_type
+
+    def __str__(self):
+        return ", ".join([self.job_title, self.company, self.location, self.employment_type])
 
 
 def get_element_text(element: bs4.ResultSet, debug: bool = False):
@@ -43,7 +51,7 @@ def get_element_text2(prev_sib_element: bs4.element, debug: bool = False):
     raise Exception("Text not found.")
 
 
-def get_job_details(job_link: str):
+def get_job_details(job_link: str, debug: bool = False):
     http = urllib3.PoolManager()
     page = http.request("GET", job_link)
 
@@ -58,7 +66,10 @@ def get_job_details(job_link: str):
     location = get_element_text2(company_element[0].parent)
     employment = get_element_text2(employment_elder_element[0])
 
-    return JobPosting(title, company, location, employment)
+    JP = JobPosting(title, company, location, employment)
+    if debug:
+        print(JP)
+    return JP
 
 
 get_job_details(
