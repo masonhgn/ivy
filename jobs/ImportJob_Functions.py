@@ -61,16 +61,18 @@ def get_job_details(job_link: str, debug: bool = False):
     company_element = soup.find_all("a", class_=re.compile(LinkedInTags.company_tag))
     employment_elder_element = soup.find_all("h3", string=re.compile(".*Employment type.*"))
 
-    title = get_element_text(job_title_element)
-    company = get_element_text(company_element)
-    location = get_element_text2(company_element[0].parent)
-    employment = get_element_text2(employment_elder_element[0])
+    title = get_element_text(job_title_element, debug)
+    company = get_element_text(company_element, debug)
+    location = get_element_text2(company_element[0].parent, debug)
+    employment = get_element_text2(employment_elder_element[0], debug)
 
     JP = JobPosting(title, company, location, employment)
     if debug:
         print(JP)
     return JP
 
+j1 = "https://www.linkedin.com/jobs/view/3368796517/?alternateChannel=search&refId=2iuTensk5PCFJjxJs%2FuhvA%3D%3D&trackingId=BN9QG6Syxa%2Fry%2FfpetBknA%3D%3D"
+j2 = "https://www.linkedin.com/jobs/view/3366946673/?alternateChannel=search&refId=GfZ1vWKD8a7TdZQ97MOShQ%3D%3D&trackingId=y4hkc%2FEcPD8sRmUItotbUw%3D%3D"
 
-get_job_details(
-    "https://www.linkedin.com/jobs/view/3368796517/?alternateChannel=search&refId=2iuTensk5PCFJjxJs%2FuhvA%3D%3D&trackingId=BN9QG6Syxa%2Fry%2FfpetBknA%3D%3D")
+get_job_details(j1, True)
+get_job_details(j2, True)

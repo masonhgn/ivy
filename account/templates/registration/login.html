@@ -19,6 +19,9 @@
             </div>
             <input type="hidden" name="next" value="{{ next }}" />
             <button class="btn btn-md btn-primary btn-block" type="submit">Sign in</button>
+            <button class="btn btn-md btn-primary btn-block">
+                <a href="{% url 'social:begin' 'linkedin-oauth2' %}" style="color: white">Login with LinkedIn</a>
+            </button>
         </form>
         <p>
             <a href="{% url 'password_reset' %}">Forgot password?</a>
