@@ -16,14 +16,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Changa:wght@200&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
 
 </head>
-    <div class="top-container">
+    <!-- <div class="top-container">
         <div class="logo-container">
             <image src="{% static 'logo.png' %}" class="logo-img"></image>
         </div>
-    </div>
+    </div> -->
 
 <body>
-    <div id="header">
+    <!-- <div id="header">
             <nav class="main-nav">
                 {% if request.user.is_authenticated %}
                     <ul class="nav-menu">
@@ -60,9 +60,38 @@
 
         
         
-    </div>
+    </div> -->
 
-    <hr class="solid">
+
+    <nav class="navbar navbar-expand-md navbar-dark background-1">
+        <a href="" class="navbar-brand">
+            <img src="{% static 'logo.png' %}" style="width: 90px; height: 50px; object-fit: cover;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="collapsibleNavbar" class="collapse navbar-collapse d-md-flex justify-content-end">
+            <ul class="navbar-nav">
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'jobs:homepage' %}" class="nav-link f-lg text-light">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'profile' %}" class="nav-link f-lg text-light">Hello {{request.user.first_name|default:request.user.username }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'logout' %}" class="nav-link f-lg text-light">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="{% url 'login' %}" class="nav-link f-lg text-light">Login</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <!-- <hr class="solid"> -->
     
     {% if messages %}
     <ul class="messages" style="text-align: center; list-style-type: none;">
@@ -77,7 +106,7 @@
     {% endif %}
 
 
-    <div id="main-content">
+    <div class="container">
         {% block content %}
         {% endblock %}
     </div>
