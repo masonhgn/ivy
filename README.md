@@ -14,6 +14,12 @@ I've also updated the home page CSS
 ![image](https://user-images.githubusercontent.com/73012906/202124295-de817eec-ed1f-40bc-adf0-d5c281ac2706.png)
 
 
+Installation and setup:
+1. Clone repo to designated directory, move into directory 
+2. create/activate virtual environment
+3. run command to install dependencies: pip install -r requirements.txt
+4. run command to start server: python manage.py runserver
+5. navigate to localhost:8000 on your browser to see functioning project!
 
 
 
