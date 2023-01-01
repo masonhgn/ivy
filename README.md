@@ -15,7 +15,8 @@ I've also updated the home page CSS
 
 
 Installation and setup:
-1. Clone repo to designated directory, move into directory 
+(Assuming you have latest version of python, pip and virtualenv installed)
+1. Clone repo to designated directory, navigate into directory
 2. create/activate virtual environment
 3. run command to install dependencies: pip install -r requirements.txt
 4. run command to start server: python manage.py runserver
