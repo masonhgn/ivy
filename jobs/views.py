@@ -9,8 +9,26 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.http import JsonResponse
 from django.views import generic
+from rest_framework import viewsets
+from .serializers import CompanySerializer, CompanyReviewSerializer, JobApplicationSerializer
 import json
 
+
+##### for REST API #####
+
+class JobApplicationViewSet(viewsets.ModelViewSet):
+    queryset = JobApplication.objects.all()
+    serializer_class = JobApplicationSerializer
+
+class CompanyReviewViewSet(viewsets.ModelViewSet):
+    queryset = CompanyReview.objects.all()
+    serializer_class = CompanyReviewSerializer
+
+class CompanyViewSet(viewsets.ModelViewSet):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+
+########################
 
 @login_required
 def company_review_create(request):
@@ -96,6 +114,8 @@ def homepage(request):
 class CompanyDetailView(DetailView):
     model = Company
     template_name = 'jobs/job/company_detail.html'
+
+
 
 class CompanyReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = CompanyReview

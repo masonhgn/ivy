@@ -1,12 +1,17 @@
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
-from jobs import views
+from rest_framework import routers
+from . import views
+
+router = routers.DefaultRouter()
+router.register(r'profiles', views.ProfileViewSet)
 
 urlpatterns = [
     path('', include('django.contrib.auth.urls')),
     path("select2/", include("django_select2.urls")),
-    path('',views.homepage, name='homepage'),
 ]
+
+urlpatterns += router.urls
 
 
 
