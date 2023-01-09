@@ -7,7 +7,7 @@ from .models import JobApplication, CompanyReview, Company
 from django.views.generic import ListView, DetailView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from django.views import generic
 from rest_framework import viewsets
 from .serializers import CompanySerializer, CompanyReviewSerializer, JobApplicationSerializer
@@ -40,7 +40,7 @@ def company_review_create(request):
             new_review.user = request.user
             new_review.save()
             messages.success(request, 'Review has been posted.')
-            return redirect('/')
+            return redirect('homepage')
             #return redirect(new_review.company.get_absolute_url())
     else:
         form = CompanyReviewForm(data=request.GET)
@@ -85,7 +85,7 @@ class JobApplicationCreateView(generic.CreateView):
     model = JobApplication
     template_name = 'jobs/job/jobapplication_form.html'
     form_class = forms.JobApplicationForm
-    success_url = reverse_lazy('homepage')
+    success_url = '/'
     def form_valid(self, form):
         form.instance.user=self.request.user
         return super().form_valid(form)
@@ -119,7 +119,7 @@ class CompanyDetailView(DetailView):
 
 class CompanyReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = CompanyReview
-    success_url = reverse_lazy('homepage')
+    success_url = '/'
     def test_func(self):
         CompanyReview = self.get_object()
         if self.request.user == CompanyReview.user:
@@ -129,7 +129,7 @@ class CompanyReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteVie
 class JobApplicationDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = JobApplication
     template_name = 'jobs/job/jobapplication_confirm_delete.html'
-    success_url = reverse_lazy('homepage')
+    success_url = '/'
     def test_func(self):
         JobApplication = self.get_object()
         if self.request.user == JobApplication.user:
@@ -140,7 +140,7 @@ class JobApplicationDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteVi
 class JobApplicationUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = JobApplication
     template_name = 'jobs/job/jobapplication_form.html'
-    success_url = reverse_lazy('homepage')
+    success_url = '/'
     fields = ['stage', 'date_applied']
     def form_valid(self, form):
         form.instance.user=self.request.user

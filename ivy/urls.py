@@ -24,7 +24,7 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('profile/', views.profile, name='profile'),
     path('', include('jobs.urls')),
-    path('',include('account.urls')),
+    path('account/',include('account.urls')),
 ]
 
 if settings.DEBUG:
